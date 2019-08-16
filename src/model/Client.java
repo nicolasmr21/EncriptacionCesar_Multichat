@@ -28,6 +28,7 @@ public class Client implements Runnable {
     // The default port.
     int portNumber = 2222;
     // The default host.
+    //PLEASE PUT YOUR IPV4 ADDRESS BEFORE INITIALIZING THE SERVER OR CLIENT.
     String host = "localhost";
 
     if (args.length < 2) {
