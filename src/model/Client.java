@@ -25,7 +25,6 @@ public class Client implements Runnable {
   private static int decimalKey;
   
   public static void main(String[] args) {
-	logged = false;
     // The default port.
     int portNumber = 2222;
     // The default host.
@@ -68,14 +67,15 @@ public class Client implements Runnable {
         	
           String input = inputLine.readLine().trim();
           
-         
-          
-          
+ 
           if(!logged) {
         	  os.println(input); 
         	  logged = true;
+        	  System.out.println("Me loguee");
           }else {
-              os.println(cifrarCesar(input.trim(), decimalKey));}
+        	  System.out.println("Cesar");
+              os.println(cifrarCesar(input.trim(), decimalKey));
+          }
           
           
         }
@@ -108,18 +108,19 @@ public class Client implements Runnable {
     		String words[] = responseLine.split(" ");
     		String user = words[0];
     		String message  = "";
-    		for (int i = 0; i < words.length; i++) {
+    		for (int i = 1; i < words.length; i++) {
 				message += " " +words[i].trim();
 			}
-    		responseLine = descifrarCesar(message, decimalKey);	
+    		responseLine = user +" " +descifrarCesar(message.trim(), decimalKey);	
     	}
     	if(responseLine.startsWith("KEY:")) {
          	hexaKey = responseLine.substring(4);
-    		int decimalKey = hexToDecimal(hexaKey);
-    	}else {
+    		decimalKey = hexToDecimal(hexaKey);
+    		
+    	}
     		
     		System.out.println(responseLine);
-    	}	
+    	
     	
         
         if (responseLine.indexOf("*** Bye") != -1)
